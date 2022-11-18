@@ -1,19 +1,19 @@
 import Container from "../components/layout/container";
 import Header from "../components/layout/header";
 
-function HomePage(props) {
+function NewBugPage() {
   return (
     <div className="flex-1 justify-center">
       <Container>
         <Header
-          text="Open Tasks"
-          buttonText="Add"
-          hasButton={true}
-          hasCounter={true}
+          text="New Bug"
+          hasButton={false}
+          hasBack={true}
+          hasCounter={false}
         />
       </Container>
     </div>
   );
 }
 
-export default HomePage;
+export default NewBugPage;
