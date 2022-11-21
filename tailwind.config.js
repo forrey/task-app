@@ -24,8 +24,13 @@ module.exports = {
       d40: "#7C7C7C",
       d50: "#979797",
       d60: "#B7B4B4",
+      d65: "#CCCACA",
       d70: "#EAE7E7",
       d80: "#F5F5F5",
+      critical: "#F95151",
+      high: "#FD8948",
+      medium: "#F4C15D",
+      low: "#9FCC3E",
     },
     extend: {
       fontFamily: {
@@ -33,6 +38,9 @@ module.exports = {
       },
       boxShadow: {
         "card-shadow": "0px 0px 3px 0px #EBEFFF, 0px 0px 10px 0px #EBEFFF",
+      },
+      margin: {
+        4.5: "18px",
       },
     },
   },

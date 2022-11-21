@@ -16,4 +16,8 @@ const EFTA_SITES = [
   },
 ];
 
+export function getProjectName(projectSlug) {
+  return EFTA_SITES.find((site) => site.slug === projectSlug);
+}
+
 export default EFTA_SITES;

@@ -37,12 +37,16 @@ function NewRequestPage() {
   function formSubmissionHandler(event) {
     event.preventDefault();
 
+    var currentDate = new Date();
+
     const reqBody = {
       title: titleInputRef.current.value,
       slug: slugify(titleInputRef.current.value),
       description: descriptionInputRef.current.value,
       website: websiteInputRef.current.value,
       priority: priorityInputRef.current.value,
+      taskType: "request",
+      date: currentDate,
     };
 
     fetch("/api/tasks", {

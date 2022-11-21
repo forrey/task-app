@@ -23,10 +23,19 @@ function TaskList(props) {
 
   if (!isLoading && tasks.length > 0) {
     return (
-      <ul>
+      <ul className="flex flex-col gap-4">
         {tasks.map((task) => (
           <li>
-            <Task title={task.title} description={task.description} />
+            <Task
+              key={task.slug}
+              title={task.title}
+              description={task.description}
+              slug={task.slug}
+              website={task.website}
+              priority={task.priority}
+              taskType={task.taskType}
+              date={task.date}
+            />
           </li>
         ))}
       </ul>

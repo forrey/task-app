@@ -15,7 +15,8 @@ async function handler(req, res) {
   }
 
   if (req.method === "POST") {
-    const { title, slug, description, website, priority } = req.body;
+    const { title, slug, description, website, priority, taskType, date } =
+      req.body;
 
     if (!title || !description) {
       res.status(422).json({ message: "Invalid data" });
@@ -29,6 +30,8 @@ async function handler(req, res) {
         description: description,
         website: website,
         priority: priority,
+        taskType: taskType,
+        date: date,
       });
     } catch (error) {
       res.status(500).json({ message: "Adding data failed" });
