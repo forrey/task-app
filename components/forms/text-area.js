@@ -1,7 +1,8 @@
 import InputLabel from "./input-label";
+import { forwardRef } from "react";
 
-function TextArea(props) {
-  const { hasLabel, labelText, id, ref, isRequired, placeholderText, height } =
+const TextArea = forwardRef((props, ref) => {
+  const { hasLabel, labelText, id, isRequired, placeholderText, height } =
     props;
 
   return (
@@ -16,7 +17,7 @@ function TextArea(props) {
       ></textarea>
     </div>
   );
-}
+});
 
 TextArea.defaultProps = {
   hasLabel: true,

@@ -1,7 +1,8 @@
 import InputLabel from "./input-label";
+import { forwardRef } from "react";
 
-function TextInput(props) {
-  const { hasLabel, labelText, id, ref, isRequired, placeholderText } = props;
+const TextInput = forwardRef((props, ref) => {
+  const { hasLabel, labelText, id, isRequired, placeholderText } = props;
 
   return (
     <div className="grow">
@@ -16,7 +17,7 @@ function TextInput(props) {
       />
     </div>
   );
-}
+});
 
 TextInput.defaultProps = {
   hasLabel: true,

@@ -30,3 +30,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# secret stuff
+/helpers/db-utils.js

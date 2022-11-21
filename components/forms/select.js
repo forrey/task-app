@@ -1,11 +1,11 @@
 import InputLabel from "./input-label";
+import { forwardRef } from "react";
 
-function Select(props) {
+const Select = forwardRef((props, ref) => {
   const {
     hasLabel,
     labelText,
     id,
-    ref,
     isRequired,
     options,
     hasDefaultOption,
@@ -27,7 +27,12 @@ function Select(props) {
         className="h-10 border-b50 border rounded w-full px-3 text-d10 text-base outline-b30"
       >
         {hasDefaultOption && (
-          <option defaultValue disabled value="" className="text-d60">
+          <option
+            defaultValue
+            disabled
+            value={defaultOptionText}
+            className="text-d60"
+          >
             {defaultOptionText}
           </option>
         )}
@@ -41,7 +46,7 @@ function Select(props) {
       </select>
     </div>
   );
-}
+});
 
 Select.defaultProps = {
   hasLabel: true,
