@@ -11,6 +11,7 @@ import ButtonPrimary from "../components/ui/button-primary";
 import Card from "../components/ui/card";
 import EFTA_SITES from "../efta-sites";
 import ButtonSecondary from "../components/ui/button-secondary";
+import slugify from "react-slugify";
 
 function NewRequestPage() {
   const titleInputRef = useRef();
@@ -38,6 +39,7 @@ function NewRequestPage() {
 
     const reqBody = {
       title: titleInputRef.current.value,
+      slug: slugify(titleInputRef.current.value),
       description: descriptionInputRef.current.value,
       website: websiteInputRef.current.value,
       priority: priorityInputRef.current.value,

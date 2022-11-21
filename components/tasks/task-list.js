@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import Task from "./task";
+import Desk from "../visuals/illustrations/desk";
+import EmptyState from "../ui/empty-state";
 
 function TaskList(props) {
   const [tasks, setTasks] = useState();
@@ -15,7 +17,11 @@ function TaskList(props) {
       });
   }, []);
 
-  if (tasks) {
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!isLoading && tasks.length > 0) {
     return (
       <ul>
         {tasks.map((task) => (
@@ -24,6 +30,15 @@ function TaskList(props) {
           </li>
         ))}
       </ul>
+    );
+  }
+
+  if (!isLoading && tasks.length === 0) {
+    return (
+      <EmptyState
+        illustration={<Desk />}
+        text="There are currently no open tasks, we must be all caught up."
+      />
     );
   }
 }

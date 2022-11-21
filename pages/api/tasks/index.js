@@ -15,7 +15,7 @@ async function handler(req, res) {
   }
 
   if (req.method === "POST") {
-    const { title, description, website, priority } = req.body;
+    const { title, slug, description, website, priority } = req.body;
 
     if (!title || !description) {
       res.status(422).json({ message: "Invalid data" });
@@ -25,6 +25,7 @@ async function handler(req, res) {
     try {
       await insertDocument(client, "tasks", {
         title: title,
+        slug: slug,
         description: description,
         website: website,
         priority: priority,
