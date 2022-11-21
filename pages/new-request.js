@@ -43,7 +43,7 @@ function NewRequestPage() {
       priority: priorityInputRef.current.value,
     };
 
-    fetch("/api/new-request", {
+    fetch("/api/tasks", {
       method: "POST",
       body: JSON.stringify(reqBody),
       headers: {
