@@ -7,7 +7,7 @@ import Select from "../select";
 import TextArea from "../text-area";
 import TextInput from "../text-input";
 import ButtonPrimary from "../../ui/button-primary";
-import EFTA_SITES from "../../../efta-sites";
+import EFTA_PROJECTS from "../../../efta-projects";
 import ButtonSecondary from "../../ui/button-secondary";
 import slugify from "react-slugify";
 import ButtonGroup from "../../ui/button-group";
@@ -26,7 +26,7 @@ function NewBugForm() {
   // We need to convert the efta sites into the proper format
   // select.js expects an object of key/value pairs like:
   // {"Option 1": "option-1", "Option 2" : "option-2"}
-  const eftaSitesConverted = EFTA_SITES.reduce(function (map, obj) {
+  const eftaSitesConverted = EFTA_PROJECTS.reduce(function (map, obj) {
     map[obj.name] = obj.slug;
     return map;
   }, {});

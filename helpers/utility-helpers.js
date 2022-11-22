@@ -1,4 +1,4 @@
-import EFTA_SITES from "../efta-sites";
+import EFTA_PROJECTS from "../efta-projects";
 
 export function getPriority(priority) {
   let text = "";
@@ -33,5 +33,5 @@ export function convertDate(date) {
 }
 
 export function getProjectName(projectSlug) {
-  return EFTA_SITES.find((site) => site.slug === projectSlug).name;
+  return EFTA_PROJECTS.find((site) => site.slug === projectSlug).name;
 }

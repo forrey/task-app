@@ -1,4 +1,4 @@
-const EFTA_SITES = [
+const EFTA_PROJECTS = [
   {
     name: "Environment for the Americas",
     slug: "efta-main",
@@ -14,10 +14,20 @@ const EFTA_SITES = [
     slug: "whp",
     url: "https://westernhummingbirdpartnership.org",
   },
+  {
+    name: "Web Hosting",
+    slug: "hosting",
+    url: "https://www.siteground.com",
+  },
+  {
+    name: "Misc",
+    slug: "misc",
+    url: "",
+  },
 ];
 
 export function getProjectName(projectSlug) {
-  return EFTA_SITES.find((site) => site.slug === projectSlug);
+  return EFTA_PROJECTS.find((site) => site.slug === projectSlug);
 }
 
-export default EFTA_SITES;
+export default EFTA_PROJECTS;
