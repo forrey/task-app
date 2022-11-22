@@ -4,13 +4,22 @@ import Desk from "../visuals/illustrations/desk";
 import EmptyState from "../ui/empty-state";
 import TaskSkeleton from "../ui/skeletons/task-skeleton";
 
-function TaskList({ setNumTasks }) {
+function TaskList(props) {
+  const { setNumTasks, taskCategory } = props;
   const [tasks, setTasks] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
+  let api = "";
+
+  if (taskCategory === "open") {
+    api = "api/tasks";
+  } else if (taskCategory === "archived") {
+    api = "api/tasks/archived";
+  }
+
   useEffect(() => {
     setIsLoading(true);
-    fetch("/api/tasks")
+    fetch(api)
       .then((response) => response.json())
       .then((data) => {
         setTasks(data.tasks);
@@ -53,7 +62,7 @@ function TaskList({ setNumTasks }) {
     return (
       <EmptyState
         illustration={<Desk />}
-        text="There are currently no open tasks, we must be all caught up."
+        text={`There are currently no ${taskCategory} tasks, we must be all caught up.`}
       />
     );
   }

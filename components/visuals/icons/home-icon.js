@@ -1,8 +1,9 @@
 function HomeIcon(props) {
+  const { color } = props;
+
   return (
     <svg
       fill="none"
-      stroke={props.color ? props.color : "#222"}
       height="24"
       viewBox="0 0 24 24"
       width="24"
@@ -15,5 +16,9 @@ function HomeIcon(props) {
     </svg>
   );
 }
+
+HomeIcon.defaultProps = {
+  color: "#222",
+};
 
 export default HomeIcon;

@@ -5,8 +5,8 @@ import ArchiveIcon from "../../visuals/icons/archive-icon";
 function Menu(props) {
   return (
     <ul className="flex flex-col justify-center h-full">
-      <MenuItem text="Open" active="true" icon={<HomeIcon color="#365BFC" />} />
-      <MenuItem text="Archived" icon={<ArchiveIcon />} />
+      <MenuItem text="Open" icon={<HomeIcon />} link="/" />
+      <MenuItem text="Archived" icon={<ArchiveIcon />} link="/archive" />
     </ul>
   );
 }

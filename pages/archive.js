@@ -3,24 +3,23 @@ import Container from "../components/layout/container";
 import Header from "../components/layout/header";
 import TaskList from "../components/tasks/task-list";
 
-function HomePage() {
+function ArchivePage() {
   const [numTasks, setNumTasks] = useState();
 
   return (
     <div className="flex-1 justify-center">
       <Container>
         <Header
-          text="Open Tasks"
-          buttonText="New task"
-          hasButton={true}
+          text="Archived Tasks"
+          hasButton={false}
           hasCounter={true}
           numItems={numTasks}
         />
 
-        <TaskList setNumTasks={setNumTasks} taskCategory="open" />
+        <TaskList setNumTasks={setNumTasks} taskCategory="archived" />
       </Container>
     </div>
   );
 }
 
-export default HomePage;
+export default ArchivePage;
