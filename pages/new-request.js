@@ -1,4 +1,5 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { useRouter } from "next/router";
 import FormRow from "../components/forms/form-row";
 import FormSpacer from "../components/forms/form-spacer";
 import Form from "../components/forms/form";
@@ -14,11 +15,14 @@ import ButtonSecondary from "../components/ui/button-secondary";
 import slugify from "react-slugify";
 
 function NewRequestPage() {
+  const router = useRouter();
+
   const titleInputRef = useRef();
   const descriptionInputRef = useRef();
   const websiteInputRef = useRef();
   const priorityInputRef = useRef();
 
+  const [isSending, setIsSending] = useState(false);
   // We need to convert the efta sites into the proper format
   // select.js expects an object of key/value pairs like:
   // {"Option 1": "option-1", "Option 2" : "option-2"}
@@ -36,6 +40,7 @@ function NewRequestPage() {
 
   function formSubmissionHandler(event) {
     event.preventDefault();
+    setIsSending(true);
 
     var currentDate = new Date();
 
@@ -70,9 +75,13 @@ function NewRequestPage() {
         descriptionInputRef.current.value = null;
         websiteInputRef.current.value = null;
         priorityInputRef.current.value = null;
+
+        setIsSending(false);
+        router.push("/");
       })
       .catch((error) => {
         console.log("Something went wrong");
+        setIsSending(false);
       });
   }
 
@@ -134,6 +143,8 @@ function NewRequestPage() {
                 text="Add Request"
                 link=""
                 onClick={formSubmissionHandler}
+                hasSpinner={true}
+                isSpinning={isSending}
               />
             </FormRow>
           </Form>
