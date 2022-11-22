@@ -12,13 +12,15 @@ import ButtonSecondary from "../../ui/button-secondary";
 import slugify from "react-slugify";
 import ButtonGroup from "../../ui/button-group";
 
-function NewRequestForm() {
+function NewBugForm() {
   const router = useRouter();
 
   const titleInputRef = useRef();
   const descriptionInputRef = useRef();
+  const descriptionInputTwoRef = useRef();
   const websiteInputRef = useRef();
   const priorityInputRef = useRef();
+  const linkInputRef = useRef();
 
   const [isSending, setIsSending] = useState(false);
   // We need to convert the efta sites into the proper format
@@ -46,9 +48,11 @@ function NewRequestForm() {
       title: titleInputRef.current.value,
       slug: slugify(titleInputRef.current.value),
       description: descriptionInputRef.current.value,
+      descriptionTwo: descriptionInputTwoRef.current.value,
       website: websiteInputRef.current.value,
       priority: priorityInputRef.current.value,
-      taskType: "request",
+      link: linkInputRef.current.value,
+      taskType: "bug",
       status: "new",
       date: currentDate,
     };
@@ -72,8 +76,10 @@ function NewRequestForm() {
       .then((data) => {
         titleInputRef.current.value = null;
         descriptionInputRef.current.value = null;
+        descriptionInputTwoRef.current.value = null;
         websiteInputRef.current.value = null;
         priorityInputRef.current.value = null;
+        linkInputRef.current.value = null;
 
         setIsSending(false);
         router.push("/");
@@ -88,20 +94,30 @@ function NewRequestForm() {
     <Form>
       <FormRow>
         <TextInput
-          labelText="Request name"
+          labelText="Bug name"
           id="title"
-          placeholderText="i.e. New page on EFTA main site"
+          placeholderText="i.e. Fix button on EFTA home page"
           ref={titleInputRef}
         />
       </FormRow>
 
       <FormRow>
         <TextArea
-          labelText="Request description"
+          labelText="Current behavior"
           id="description"
-          placeholderText="Be as detailed as possible."
-          height="xl"
+          placeholderText="i.e. Clicking the button doesn't do anything"
+          height="m"
           ref={descriptionInputRef}
+        />
+      </FormRow>
+
+      <FormRow>
+        <TextArea
+          labelText="Expected behavior"
+          id="description"
+          placeholderText="i.e. Clicking the button should show the registration form"
+          height="m"
+          ref={descriptionInputTwoRef}
         />
       </FormRow>
 
@@ -124,6 +140,15 @@ function NewRequestForm() {
         />
       </FormRow>
 
+      <FormRow>
+        <TextInput
+          labelText="Link to the bug"
+          id="title"
+          placeholderText="The page where you see the problem"
+          ref={linkInputRef}
+        />
+      </FormRow>
+
       <FormSpacer hasDivider={true} size="xl" />
 
       <FormRow hasMargin={false} contentAlignment={"right"}>
@@ -142,4 +167,4 @@ function NewRequestForm() {
   );
 }
 
-export default NewRequestForm;
+export default NewBugForm;

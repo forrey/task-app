@@ -19,11 +19,13 @@ async function handler(req, res) {
       title,
       slug,
       description,
+      descriptionTwo,
       website,
       priority,
       taskType,
       status,
       date,
+      link,
     } = req.body;
 
     if (!title || !description) {
@@ -36,8 +38,10 @@ async function handler(req, res) {
         title: title,
         slug: slug,
         description: description,
+        descriptionTwo: descriptionTwo,
         website: website,
         priority: priority,
+        link: link,
         taskType: taskType,
         status: status,
         date: date,
