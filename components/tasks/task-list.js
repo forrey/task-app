@@ -30,7 +30,7 @@ function TaskList(props) {
 
   if (!isLoading && tasks.length > 0) {
     return (
-      <ul className="flex flex-col gap-4">
+      <ul className="flex flex-col gap-4 pb-10">
         {tasks.map((task) => (
           <li>
             <Task

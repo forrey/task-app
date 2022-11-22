@@ -35,7 +35,7 @@ function Task(props) {
           <Badge text={taskTypeCapitalized} />
           <Badge text={priorityText} color={priorityColor} />
         </div>
-        <div className="h-6 text-xs text-d50 h-full flex items-center">
+        <div className="h-6 text-xs text-d50 flex items-center">
           <span>{formattedDate}</span>
           <span className="mx-2">•</span>
           <span>{projectName}</span>

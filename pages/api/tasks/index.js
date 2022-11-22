@@ -15,8 +15,16 @@ async function handler(req, res) {
   }
 
   if (req.method === "POST") {
-    const { title, slug, description, website, priority, taskType, date } =
-      req.body;
+    const {
+      title,
+      slug,
+      description,
+      website,
+      priority,
+      taskType,
+      status,
+      date,
+    } = req.body;
 
     if (!title || !description) {
       res.status(422).json({ message: "Invalid data" });
@@ -31,6 +39,7 @@ async function handler(req, res) {
         website: website,
         priority: priority,
         taskType: taskType,
+        status: status,
         date: date,
       });
     } catch (error) {
@@ -43,7 +52,9 @@ async function handler(req, res) {
 
   if (req.method === "GET") {
     try {
-      const documents = await getDocuments(client, "tasks");
+      const documents = await getDocuments(client, "tasks", null, {
+        priority: 1,
+      });
       res.status(200).json({ tasks: documents });
     } catch (error) {
       res.status(500).json({ message: "Failed to get tasks" });

@@ -1,6 +1,6 @@
 import MenuItem from "./menu-item";
-import HomeIcon from "../visuals/icons/home-icon";
-import ArchiveIcon from "../visuals/icons/archive-icon";
+import HomeIcon from "../../visuals/icons/home-icon";
+import ArchiveIcon from "../../visuals/icons/archive-icon";
 
 function Menu(props) {
   return (
