@@ -107,7 +107,7 @@ function NewRequestPage() {
               />
             </FormRow>
 
-            <FormSpacer />
+            <FormSpacer size="s" />
 
             <FormRow>
               <Select
@@ -126,7 +126,7 @@ function NewRequestPage() {
               />
             </FormRow>
 
-            <FormSpacer hasDivider={true} />
+            <FormSpacer hasDivider={true} size="xl" />
 
             <FormRow hasMargin={false} contentAlignment={"right"}>
               <ButtonSecondary text="Cancel" link="/" />
