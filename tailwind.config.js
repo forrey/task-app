@@ -45,4 +45,5 @@ module.exports = {
     },
   },
   plugins: [],
+  safelist: ["bg-critical", "bg-high", "bg-medium", "bg-low"],
 };

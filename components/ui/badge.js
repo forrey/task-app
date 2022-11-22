@@ -7,7 +7,7 @@ function Badge(props) {
     <div
       className={classNames(
         color,
-        "h-6 text-white text-sm w-fit px-2 rounded-sm flex items-center"
+        "h-6 text-white text-xs w-fit px-2 rounded-sm flex items-center"
       )}
     >
       {text}

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Task from "./task";
 import Desk from "../visuals/illustrations/desk";
 import EmptyState from "../ui/empty-state";
+import TaskSkeleton from "../ui/skeletons/task-skeleton";
 
 function TaskList(props) {
   const [tasks, setTasks] = useState();
@@ -18,7 +19,13 @@ function TaskList(props) {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex flex-col gap-4">
+        <TaskSkeleton />
+        <TaskSkeleton />
+        <TaskSkeleton />
+      </div>
+    );
   }
 
   if (!isLoading && tasks.length > 0) {
