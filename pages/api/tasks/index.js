@@ -52,9 +52,14 @@ async function handler(req, res) {
 
   if (req.method === "GET") {
     try {
-      const documents = await getDocuments(client, "tasks", null, {
-        priority: 1,
-      });
+      const documents = await getDocuments(
+        client,
+        "tasks",
+        { status: "new" },
+        {
+          priority: 1,
+        }
+      );
       res.status(200).json({ tasks: documents });
     } catch (error) {
       res.status(500).json({ message: "Failed to get tasks" });

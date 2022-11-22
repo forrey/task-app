@@ -1,10 +1,11 @@
+import { useState } from "react";
 import Container from "../components/layout/container";
 import Header from "../components/layout/header";
 import TaskList from "../components/tasks/task-list";
-import EmptyState from "../components/ui/empty-state";
-import Desk from "../components/visuals/illustrations/desk";
 
-function HomePage(props) {
+function HomePage() {
+  const [numTasks, setNumTasks] = useState();
+
   return (
     <div className="flex-1 justify-center">
       <Container>
@@ -13,9 +14,10 @@ function HomePage(props) {
           buttonText="New task"
           hasButton={true}
           hasCounter={true}
+          numItems={numTasks}
         />
 
-        <TaskList />
+        <TaskList setNumTasks={setNumTasks} />
       </Container>
     </div>
   );

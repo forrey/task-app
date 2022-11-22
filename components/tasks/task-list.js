@@ -4,7 +4,7 @@ import Desk from "../visuals/illustrations/desk";
 import EmptyState from "../ui/empty-state";
 import TaskSkeleton from "../ui/skeletons/task-skeleton";
 
-function TaskList(props) {
+function TaskList({ setNumTasks }) {
   const [tasks, setTasks] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -14,6 +14,7 @@ function TaskList(props) {
       .then((response) => response.json())
       .then((data) => {
         setTasks(data.tasks);
+        setNumTasks(data.tasks.length);
         setIsLoading(false);
       });
   }, []);
@@ -32,9 +33,8 @@ function TaskList(props) {
     return (
       <ul className="flex flex-col gap-4 pb-10">
         {tasks.map((task) => (
-          <li>
+          <li key={task._id}>
             <Task
-              key={task.slug}
               title={task.title}
               description={task.description}
               slug={task.slug}

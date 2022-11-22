@@ -4,7 +4,7 @@ import Link from "next/link";
 import Router from "next/router";
 
 function Header(props) {
-  const { text, hasButton, buttonText, hasBack, hasCounter } = props;
+  const { text, hasButton, buttonText, hasBack, hasCounter, numItems } = props;
 
   return (
     <div className="flex h-10 mb-6">
@@ -19,7 +19,9 @@ function Header(props) {
       <div className="header-text grow">
         <h1 className="text-4xl font-bold text-d10">
           {text}
-          {hasCounter && <span className="text-d60 font-light ml-4">12</span>}
+          {hasCounter && (
+            <span className="text-d60 font-light ml-4">{numItems}</span>
+          )}
         </h1>
       </div>
       {hasButton && (
