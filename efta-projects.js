@@ -27,7 +27,11 @@ const EFTA_PROJECTS = [
 ];
 
 export function getProjectName(projectSlug) {
-  return EFTA_PROJECTS.find((site) => site.slug === projectSlug);
+  return EFTA_PROJECTS.find((project) => project.slug === projectSlug);
 }
+
+export const eftaProjectsToSelectFormat = EFTA_PROJECTS.map((project) => {
+  return { value: project.slug, label: project.name };
+});
 
 export default EFTA_PROJECTS;

@@ -23,7 +23,11 @@ function TaskList(props) {
       .then((response) => response.json())
       .then((data) => {
         setTasks(data.tasks);
-        setNumTasks(data.tasks.length);
+
+        if (data.tasks) {
+          setNumTasks(data.tasks.length);
+        }
+
         setIsLoading(false);
       });
   }, []);
@@ -47,7 +51,7 @@ function TaskList(props) {
               title={task.title}
               description={task.description}
               slug={task.slug}
-              website={task.website}
+              project={task.project}
               priority={task.priority}
               taskType={task.taskType}
               date={task.date}

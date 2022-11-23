@@ -7,7 +7,7 @@ import {
 } from "../../helpers/utility-helpers";
 
 function Task(props) {
-  const { title, description, slug, website, priority, taskType, date } = props;
+  const { title, description, slug, project, priority, taskType, date } = props;
 
   // Get the priority text and color
   const { priorityText, priorityColor } = getPriority(priority);
@@ -20,7 +20,7 @@ function Task(props) {
   const formattedDate = convertDate(date);
 
   // Take the website and get back a project name
-  const projectName = getProjectName(website);
+  const projectName = getProjectName(project);
 
   return (
     <Card>

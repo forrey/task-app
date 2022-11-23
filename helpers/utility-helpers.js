@@ -4,16 +4,16 @@ export function getPriority(priority) {
   let text = "";
   let color = "";
 
-  if (priority === "1") {
+  if (priority === 1) {
     text = "Critical";
     color = "bg-critical";
-  } else if (priority === "2") {
+  } else if (priority === 2) {
     text = "High";
     color = "bg-high";
-  } else if (priority === "3") {
+  } else if (priority === 3) {
     text = "Medium";
     color = "bg-medium";
-  } else if (priority === "4") {
+  } else if (priority === 4) {
     text = "Low";
     color = "bg-low";
   }
@@ -35,3 +35,10 @@ export function convertDate(date) {
 export function getProjectName(projectSlug) {
   return EFTA_PROJECTS.find((site) => site.slug === projectSlug).name;
 }
+
+export const priorityLevels = [
+  { value: 4, label: "Low" },
+  { value: 3, label: "Medium" },
+  { value: 2, label: "High" },
+  { value: 1, label: "Critical" },
+];
