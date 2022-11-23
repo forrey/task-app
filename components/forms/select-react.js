@@ -1,9 +1,4 @@
 import { forwardRef, useState } from "react";
-// This is to get rid of a weird "id's dont' match" error
-const Select = dynamic(
-  import("react-select").then((mod) => mod.Select),
-  { ssr: false }
-);
 import Select from "react-select";
 import InputLabel from "./input-label";
 
@@ -27,6 +22,7 @@ const SelectReact = forwardRef((props, ref) => {
       {hasLabel && <InputLabel labelText={labelText} targetId={id} />}
       <Select
         id={id}
+        instanceId={id}
         className="h-10 rounded w-full text-d10 text-base"
         placeholder={defaultOptionText}
         options={options}
