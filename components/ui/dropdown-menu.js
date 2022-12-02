@@ -1,14 +1,18 @@
 import { useState } from "react";
 import classNames from "classnames";
+import Spinner from "./spinner";
 
 function DropdownMenu(props) {
-  const { triggerIcon } = props;
+  const { triggerIcon, hasSpinner, isSpinning } = props;
 
   const [hover, setHover] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="relative">
+      {hasSpinner && isSpinning && (
+        <Spinner backgroundColor="white" spinnerColor="dark" />
+      )}
       <div
         className={classNames(
           hover ? "bg-d80" : "bg-white",

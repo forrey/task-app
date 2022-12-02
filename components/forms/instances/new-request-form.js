@@ -23,9 +23,6 @@ function NewRequestForm() {
   const priorityInputRef = useRef();
 
   const [isSending, setIsSending] = useState(false);
-  // We need to convert the efta sites into the proper format
-  // select.js expects an object of key/value pairs like:
-  // {"Option 1": "option-1", "Option 2" : "option-2"}
 
   function formSubmissionHandler(event) {
     event.preventDefault();

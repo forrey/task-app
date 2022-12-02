@@ -1,5 +1,6 @@
 import AddIcon from "../visuals/icons/add-icon";
 import Link from "next/link";
+import Spinner from "./spinner";
 
 function ButtonPrimary(props) {
   const { text, link, hasIcon, onClick, hasSpinner, isSpinning } = props;
@@ -7,9 +8,7 @@ function ButtonPrimary(props) {
   return (
     <Link href={link} className="relative">
       {hasSpinner && isSpinning && (
-        <div className="bg-b10 absolute inset-0 border-b10 rounded flex items-center">
-          <div className="loader"></div>
-        </div>
+        <Spinner backgroundColor="b10" spinnerColor="light" />
       )}
       <button
         onClick={onClick}

@@ -4,7 +4,8 @@ import DropdownMenu from "../ui/dropdown-menu";
 import DropdownMenuItem from "../ui/dropdown-menu-item";
 import ActionsIcon from "../visuals/icons/actions-icon";
 import DeleteIcon from "../visuals/icons/delete-icon";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 import {
   getPriority,
@@ -17,6 +18,7 @@ function Task(props) {
     props;
 
   const router = useRouter();
+  const [isSending, setIsSending] = useState(false);
 
   // Get the priority text and color
   const { priorityText, priorityColor } = getPriority(priority);
@@ -32,6 +34,8 @@ function Task(props) {
   const projectName = getProjectName(project);
 
   function deleteHandler() {
+    setIsSending(true);
+
     const reqBody = {
       id: id,
     };
@@ -53,7 +57,7 @@ function Task(props) {
         });
       })
       .then((data) => {
-        console.log("finished deleting");
+        setIsSending(false);
         router.reload();
       })
       .catch((error) => {
@@ -65,7 +69,11 @@ function Task(props) {
     <Card>
       <div className="flex flex-row">
         <h2 className="text-lg text-d10 font-semibold mb-2 grow">{title}</h2>
-        <DropdownMenu triggerIcon={<ActionsIcon />}>
+        <DropdownMenu
+          triggerIcon={<ActionsIcon />}
+          hasSpinner={true}
+          isSpinning={isSending}
+        >
           <DropdownMenuItem
             icon={<DeleteIcon size="s" />}
             text="Delete Task"
