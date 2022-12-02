@@ -12,6 +12,7 @@ import slugify from "react-slugify";
 import ButtonGroup from "../../ui/button-group";
 import SelectReact from "../select-react";
 import { priorityLevels } from "../../../helpers/utility-helpers";
+import { v4 as uuidv4 } from "uuid";
 
 function NewRequestForm() {
   const router = useRouter();
@@ -31,9 +32,11 @@ function NewRequestForm() {
     setIsSending(true);
 
     var currentDate = new Date();
+    var newID = uuidv4();
 
     const reqBody = {
       title: titleInputRef.current.value,
+      id: newID,
       slug: slugify(titleInputRef.current.value),
       description: descriptionInputRef.current.value,
       project: projectInputRef.current.value,

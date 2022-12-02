@@ -46,8 +46,9 @@ function TaskList(props) {
     return (
       <ul className="flex flex-col gap-4 pb-10">
         {tasks.map((task) => (
-          <li key={task._id}>
+          <li key={task.id}>
             <Task
+              id={task.id}
               title={task.title}
               description={task.description}
               slug={task.slug}

@@ -1,5 +1,11 @@
 import Badge from "../ui/badge";
 import Card from "../ui/card";
+import DropdownMenu from "../ui/dropdown-menu";
+import DropdownMenuItem from "../ui/dropdown-menu-item";
+import ActionsIcon from "../visuals/icons/actions-icon";
+import DeleteIcon from "../visuals/icons/delete-icon";
+import Router, { useRouter } from "next/router";
+
 import {
   getPriority,
   convertDate,
@@ -7,7 +13,10 @@ import {
 } from "../../helpers/utility-helpers";
 
 function Task(props) {
-  const { title, description, slug, project, priority, taskType, date } = props;
+  const { title, description, slug, project, priority, taskType, date, id } =
+    props;
+
+  const router = useRouter();
 
   // Get the priority text and color
   const { priorityText, priorityColor } = getPriority(priority);
@@ -22,10 +31,47 @@ function Task(props) {
   // Take the website and get back a project name
   const projectName = getProjectName(project);
 
+  function deleteHandler() {
+    const reqBody = {
+      id: id,
+    };
+
+    fetch("/api/tasks", {
+      method: "DELETE",
+      body: JSON.stringify(reqBody),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+
+        response.json().then((data) => {
+          throw new Error(data.message || "Something Went Wrong");
+        });
+      })
+      .then((data) => {
+        console.log("finished deleting");
+        router.reload();
+      })
+      .catch((error) => {
+        console.log("Something went wrong");
+      });
+  }
+
   return (
     <Card>
-      <div>
-        <h2 className="text-lg text-d10 font-semibold mb-2">{title}</h2>
+      <div className="flex flex-row">
+        <h2 className="text-lg text-d10 font-semibold mb-2 grow">{title}</h2>
+        <DropdownMenu triggerIcon={<ActionsIcon />}>
+          <DropdownMenuItem
+            icon={<DeleteIcon size="s" />}
+            text="Delete Task"
+            onClick={deleteHandler}
+          />
+        </DropdownMenu>
       </div>
       <div>
         <p className="text-small text-d20 mb-4.5">{description}</p>

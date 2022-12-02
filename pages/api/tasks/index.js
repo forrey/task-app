@@ -2,6 +2,7 @@ import {
   connectDatabase,
   getDocuments,
   insertDocument,
+  deleteDocument,
 } from "../../../helpers/db-utils";
 
 async function handler(req, res) {
@@ -16,6 +17,7 @@ async function handler(req, res) {
 
   if (req.method === "POST") {
     const {
+      id,
       title,
       slug,
       description,
@@ -36,6 +38,7 @@ async function handler(req, res) {
     try {
       await insertDocument(client, "tasks", {
         title: title,
+        id: id,
         slug: slug,
         description: description,
         descriptionTwo: descriptionTwo,
@@ -68,6 +71,18 @@ async function handler(req, res) {
     } catch (error) {
       res.status(500).json({ message: "Failed to get tasks" });
     }
+  }
+
+  if (req.method === "DELETE") {
+    const { id } = req.body;
+    try {
+      await deleteDocument(client, "tasks", { id: id });
+    } catch (error) {
+      res.status(500).json({ message: "failed to delete" });
+      return;
+    }
+
+    res.status(201).json({ message: "Successfully deleted" });
   }
 
   client.close();

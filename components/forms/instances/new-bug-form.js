@@ -12,6 +12,7 @@ import ButtonSecondary from "../../ui/button-secondary";
 import slugify from "react-slugify";
 import ButtonGroup from "../../ui/button-group";
 import { priorityLevels } from "../../../helpers/utility-helpers";
+import { v4 as uuidv4 } from "uuid";
 
 function NewBugForm() {
   const router = useRouter();
@@ -30,9 +31,11 @@ function NewBugForm() {
     setIsSending(true);
 
     var currentDate = new Date();
+    var newID = uuidv4();
 
     const reqBody = {
       title: titleInputRef.current.value,
+      id: newID,
       slug: slugify(titleInputRef.current.value),
       description: descriptionInputRef.current.value,
       descriptionTwo: descriptionInputTwoRef.current.value,

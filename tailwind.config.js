@@ -38,9 +38,17 @@ module.exports = {
       },
       boxShadow: {
         "card-shadow": "0px 0px 3px 0px #EBEFFF, 0px 0px 10px 0px #EBEFFF",
+        "floating-shadow":
+          "0px 0px 10px rgba(0, 0, 0, 0.1), 0px 0px 3px rgba(0, 0, 0, 0.05)",
       },
       margin: {
-        4.5: "18px",
+        4.5: "1.125rem",
+      },
+      padding: {
+        5.5: "1.75rem",
+      },
+      height: {
+        7: "1.75rem",
       },
     },
   },
