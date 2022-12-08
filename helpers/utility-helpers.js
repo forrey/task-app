@@ -33,7 +33,11 @@ export function convertDate(date) {
 }
 
 export function getProjectName(projectSlug) {
-  return EFTA_PROJECTS.find((site) => site.slug === projectSlug).name;
+  if (projectSlug) {
+    return EFTA_PROJECTS.find((site) => site.slug === projectSlug).name;
+  } else {
+    return "! Error";
+  }
 }
 
 export const priorityLevels = [
